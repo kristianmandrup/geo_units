@@ -8,6 +8,6 @@ end
 
 class String  
   def parse_dms
-    GeoUnits::Dms::Converter.parse_dms self
+    GeoUnits::DmsConverter.parse_dms self
   end
 end

@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{geo_units}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Kristian Mandrup}]
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.textile",
     "Rakefile",
     "VERSION",
+    "geo_units.gemspec",
     "lib/geo_units.rb",
     "lib/geo_units/converter.rb",
     "lib/geo_units/core_ext.rb",

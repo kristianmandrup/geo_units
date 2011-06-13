@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.licenses = [%q{MIT}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.5}
-  s.summary = %q{Distance unit modules for use in geo libraries}
+  s.summary = %q{Distance unit modules and functionality for use in geo libraries}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

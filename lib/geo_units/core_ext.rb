@@ -5,3 +5,9 @@ end
 class Float
   include ::GeoUnits::NumericExt
 end
+
+class String  
+  def parse_dms
+    GeoUnits::Dms::Converter.parse_dms self
+  end
+end

@@ -1,5 +1,3 @@
-require 'geo_calc'
-
 module GeoUnits
   module Converter
     # Convert numeric degrees to deg/min/sec latitude (suffixed with N/S)
@@ -11,7 +9,7 @@ module GeoUnits
 
     def to_lat deg, format = :dms, dp = 0
       deg = deg.normalize_lat
-      _lat = GeoCalc::Dms::Converter.to_dms deg, format, dp
+      _lat = DmsConverter.to_dms deg, format, dp
       _lat == '' ? '' : _lat[1..-1] + (deg<0 ? 'S' : 'N')  # knock off initial '0' for lat!
     end
 
@@ -24,7 +22,7 @@ module GeoUnits
 
     def to_lon deg, format = :dms, dp = 0
       deg = deg.normalize_lng
-      lon = GeoCalc::Dms::Converter.to_dms deg, format, dp
+      lon = DmsConverter.to_dms deg, format, dp
       lon == '' ? '' : lon + (deg<0 ? 'W' : 'E')
     end
 
@@ -38,7 +36,7 @@ module GeoUnits
 
     def to_brng deg, format = :dms, dp = 0
       deg = (deg.to_f + 360) % 360  # normalise -ve values to 180º..360º
-      brng = GeoCalc::Dms::Converter.to_dms deg, format, dp
+      brng = DmsConverter.to_dms deg, format, dp
       brng.gsub /360/, '0'  # just in case rounding took us up to 360º!
     end 
 

@@ -18,8 +18,10 @@
 require 'sugar-high/numeric'
 
 module GeoUnits
-  autoload :Converter,    'geo_units/converter'
-  autoload :NumericExt,   'geo_units/numeric_ext'
+  autoload :Converter,      'geo_units/converter'
+  autoload :DmsConverter,   'geo_units/dms_converter'
+  autoload :NumericExt,     'geo_units/numeric_ext'
 end  
 
 require 'geo_units/core_ext'
+

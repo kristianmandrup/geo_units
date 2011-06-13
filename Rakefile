@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "geo_units"
   gem.homepage = "http://github.com/kristianmandrup/geo_units"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Distance unit modules for use in geo libraries}
+  gem.description = %Q{Easily convert between different distance units such as kms, miles etc.}
   gem.email = "kmandrup@gmail.com"
   gem.authors = ["Kristian Mandrup"]
   # dependencies defined in Gemfile

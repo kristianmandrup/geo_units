@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 # Add dependencies required to use your gem here.
 
-gem "geo_calc", :path => '/Users/kristianconsult/ruby-gems/geo_calc'
+gem "geo_calc",   :path => '/Users/kristianconsult/ruby-gems/geo_calc'
 gem "sugar-high", '~> 0.4.6.2' 
 
 # Add dependencies to develop your gem here.

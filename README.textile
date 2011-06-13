@@ -1,6 +1,9 @@
 h1. Geo Units
 
-Distance unit functionality (conversions etc.) for Geo libraries. 
+Distance unit functionality (conversions etc.) for Geo libraries. See specs for details.
+
+This gem is used by the _geo_point_ and _geo_calc_ gems and perhaps by others. The aim is that it will contain most of the basic 
+distance unit functionality required by typical Geo projects.
 
 h2. Contributing to geo_units
  

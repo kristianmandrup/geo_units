@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{geo_units}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Kristian Mandrup}]
-  s.date = %q{2011-06-13}
+  s.date = %q{2011-06-19}
   s.description = %q{Easily convert between different distance units such as kms, miles etc.}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "lib/geo_units/numeric_ext.rb",
     "spec/geo_units/converter_spec.rb",
     "spec/geo_units/dms_converter_spec.rb",
+    "spec/geo_units/numeric_ext_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/geo_units}

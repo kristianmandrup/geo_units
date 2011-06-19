@@ -14,7 +14,7 @@ module GeoUnits
 
     
     def to_dms format = :dms, dp = nil
-      GeoCalc::DmsConverter.to_dms self, format, dp
+      GeoUnits::DmsConverter.to_dms self, format, dp
     end
 
     def to_lat_dms format = :dms, dp = nil

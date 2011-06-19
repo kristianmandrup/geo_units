@@ -24,6 +24,7 @@ module GeoUnits
     def to_lon_dms format = :dms, dp = nil
       GeoUnits::Converter.to_lon self, format, dp
     end
+    alias_method :to_lng_dms, :to_lon_dms
   
     # Converts numeric degrees to radians
     def to_rad

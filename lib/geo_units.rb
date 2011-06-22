@@ -81,6 +81,35 @@ module GeoUnits
     earth_radius_map[:miles] / miles_per_latitude_degree
   end  
 
+  def degrees_to_radians(degrees)   
+    degrees.to_f * radians_per_degree
+  end
+
+  def units_sphere_multiplier(units)
+    units = GeoUnits.key units
+    earth_radius_map[units]
+  end
+
+  def units_per_latitude_degree(units)
+    units = GeoUnits.key units
+    GeoUnits.radian_multiplier[units]
+  end
+
+  def units_per_longitude_degree(lat, units)
+    miles_per_longitude_degree = (latitude_degrees * Math.cos(lat * pi_div_rad)).abs 
+    units = GeoUnits.key units
+    case units
+      when :feet
+        miles_per_longitude_degree * kms_per_mile * 1000 * meters_per_feet
+      when :meters
+        miles_per_longitude_degree * kms_per_mile * 1000
+      when :kms
+        miles_per_longitude_degree * kms_per_mile
+      when :miles
+        miles_per_longitude_degree
+    end
+  end
+
   module ClassMethods
     def key unit = :km
       unit = unit.to_sym
@@ -110,15 +139,17 @@ module GeoUnits
     end
 
     def earth_radius units
-      GeoUnits.EARTH_RADIUS[units.to_sym]
+      units = GeoUnits.key units
+      GeoUnits.earth_radius_map[units]
     end
 
     def radians_per_degree
       0.017453293  #  PI/180
     end    
         
-    def radians_ratio unit
-      radians_per_degree * earth_radius[unit]          
+    def radians_ratio units
+      units = GeoUnits.key units
+      radians_per_degree * earth_radius[units]
     end
 
     def precision

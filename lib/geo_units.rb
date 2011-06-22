@@ -22,41 +22,64 @@ module GeoUnits
   autoload :DmsConverter,   'geo_units/dms_converter'
   autoload :NumericExt,     'geo_units/numeric_ext'
 
-  EARTH_RADIUS = { 
+  def earth_radius_map
+    {
     :miles      => 3963.1676, 
     :kilometers => 6378.135, 
     :meters     =>  6378135, 
     :feet       => 20925639.8 
-  }
+    }
+  end
 
-  EARTH_MAJOR_AXIS_RADIUS = { 
+  def earth_major_axis_radius_map 
+    { 
     :miles      => 3963.19059, 
     :kilometers => 6378.137,
     :meters     => 6378137,
     :feet       => 20925646.36
-  }
+    }
+  end
 
-  EARTH_MINOR_AXIS_RADIUS = { 
+  def earth_minor_axis_radius_map 
+    { 
     :kilometers => 6356.7523142,
     :miles      => 3949.90276,
     :meters     => 6356752.3142,
     :feet       => 20855486.627
-  }
+    }
+  end
   
-  RADIAN_PER_DEGREE = Math::PI / 180.0
+  def radians_per_degree
+    Math::PI / 180.0
+  end
 
   # Haversine Formula
   # Adapted from Geokit Gem
   # https://github.com/andre/geokit-gem.git
   # By: Andre Lewis
-  PI_DIV_RAD = 0.0174
+  def pi_div_rad 
+    0.0174
+  end
 
-  KMS_PER_MILE = 1.609
-  METERS_PER_FEET = 3.2808399
+  def kms_per_mile 
+    1.609
+  end
+  
+  def meters_per_feet 
+    3.2808399
+  end
 
-  MILES_PER_LATITUDE_DEGREE = 69.1
-  KMS_PER_LATITUDE_DEGREE = MILES_PER_LATITUDE_DEGREE * KMS_PER_MILE
-  LATITUDE_DEGREES = EARTH_RADIUS[:miles] / MILES_PER_LATITUDE_DEGREE  
+  def miles_per_latitude_degree 
+    69.1
+  end
+  
+  def kms_per_latitude_degree
+    miles_per_latitude_degree * kms_per_mile
+  end
+
+  def latitude_degrees 
+    earth_radius_map[:miles] / miles_per_latitude_degree
+  end  
 
   module ClassMethods
     def key unit = :km

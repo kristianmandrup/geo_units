@@ -5,6 +5,61 @@ Distance unit functionality (conversions etc.) for Geo libraries. See specs for 
 This gem is used by the _geo_point_ and _geo_calc_ gems and perhaps by others. The aim is that it will contain most of the basic 
 distance unit functionality required by typical Geo projects.
 
+h2. Usage
+
+in Gemfile:
+
+@gem 'geo_units'@
+
+Then run the bundler!
+
+@$ bundle@
+
+h2. GeoUnits API
+
+<pre>GeoUnits.key(:foot) # will convert any kind of unit into one of (:feet, :meters, :kms, :miles, :radians)
+=> :feet
+</pre>
+
+<pre>GeoUnits.kms_to :meters, 5 # convert number of one distance unit to another unit
+=> 5000  
+</pre>
+
+h2. Core extensions API
+
+<pre>2.radians_to(:kms)
+=> 222.34  
+</pre>
+
+<pre>@2.miles_to(:kms)
+=> 3.21
+</pre>
+
+h2. Dms Converter
+
+module _GeoUnits::DmsConverter_ 
+
+* parse_dms(string)
+* to_dms(deg, format = :dms, dp = nil)
+
+h2. Numeric conversions
+
+module _GeoUnits::NumericExt_
+
+This module is included on the _Fixnum_ and _Float_ classes
+
+* to_lat
+* to_lng
+* to_dms
+* to_lat_dms
+* to_lon_dms
+* to_rad
+* to_deg
+* normalize_lng
+* normalize_lat
+* normalize_deg(shift)
+
+
 h2. Contributing to geo_units
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet

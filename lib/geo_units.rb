@@ -11,8 +11,8 @@
 # or fixed-width format without separators (eg 0033709W). Seconds and minutes may be omitted. 
 # (Note minimal validation is done).
 # 
-# @param   {String|Number} dmsStr: Degrees or deg/min/sec in variety of formats
-# @returns {Number} Degrees as decimal number
+# @param   [String|Number] Degrees or deg/min/sec in variety of formats
+# @returns [Number] Degrees as decimal number
 # @throws  ArgumentError
 
 require 'sugar-high/numeric'
@@ -63,7 +63,7 @@ module GeoUnits
 
     def meters_map
       {
-       :feet => 3.2808,
+       :feet => 3.2808399,
        :meters => 1,
        :kms => 0.001,
        :miles => 0.00062137,

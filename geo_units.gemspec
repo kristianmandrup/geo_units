@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
     "spec/geo_units/converter_spec.rb",
     "spec/geo_units/dms_converter_spec.rb",
     "spec/geo_units/numeric_ext_spec.rb",
+    "spec/geo_units_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/kristianmandrup/geo_units}

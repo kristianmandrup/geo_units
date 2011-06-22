@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{geo_units}
-  s.version = "0.2.2"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Kristian Mandrup}]
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
     "lib/geo_units/dms_converter.rb",
     "lib/geo_units/numeric_ext.rb",
     "spec/geo_units/converter_spec.rb",
+    "spec/geo_units/core_ext_spec.rb",
     "spec/geo_units/dms_converter_spec.rb",
     "spec/geo_units/numeric_ext_spec.rb",
     "spec/geo_units_spec.rb",

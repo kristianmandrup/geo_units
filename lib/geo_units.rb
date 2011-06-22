@@ -31,6 +31,20 @@ module GeoUnits
       raise ArgumentError, "Unknown unit key: #{unit}"
     end
 
+    def units
+      [:feet, :meters, :kms, :miles, :radians]
+    end
+
+    [:feet, :meters, :kms, :miles, :radians].each do |unit|
+      class_eval %{
+        def #{unit}_to unit, number
+          unit   = key(unit)
+          meters = number / GeoUnits.meters_map[:#{unit}]
+          meters * meters_map[unit]
+        end
+      }
+    end
+
     def precision
       {
         :feet => 0,
@@ -44,30 +58,31 @@ module GeoUnits
     # from mongoid-geo, as suggested by niedhui :)
     def radian_multiplier
       {
-        :feet => 364491.8,
-        :meters => 111170,
-        :kms => 111.17,
-        :miles => 69.407,
-        :radians => 1
+        :feet     => 364491.8,
+        :meters   => 111170,
+        :kms      => 111.17,
+        :miles    => 69.407,
+        :radians  => 1
       }
     end
 
     def meters_multiplier
       {
-        :feet => 0.305,
-        :meters => 1,
-        :kms => 6371,
-        :miles => 3959
+        :feet     => 0.305,
+        :meters   => 1,
+        :kms      => 6371,
+        :miles    => 3959,
+        :radians  => 111170 
       }
     end
 
     def meters_map
       {
-       :feet => 3.2808399,
-       :meters => 1,
-       :kms => 0.001,
-       :miles => 0.00062137,
-       :radians => 111170
+       :feet    => 3.2808399,
+       :meters  => 1,
+       :kms     => 0.001,
+       :miles   => 0.00062137,
+       :radians => 0.00000899
       }
     end
 
@@ -91,7 +106,7 @@ module GeoUnits
 
     def radians_unit
       [:rad, :radians]
-    end  
+    end          
   end
   
   extend ClassMethods

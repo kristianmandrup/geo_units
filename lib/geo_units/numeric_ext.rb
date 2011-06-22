@@ -11,7 +11,6 @@ module GeoUnits
     def is_between? lower, upper
       (lower..upper).cover? self
     end
-
     
     def to_dms format = :dms, dp = nil
       GeoUnits::DmsConverter.to_dms self, format, dp

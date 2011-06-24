@@ -59,6 +59,17 @@ This module is included on the _Fixnum_ and _Float_ classes
 * normalize_lat
 * normalize_deg(shift)
 
+h2. Using specific GeoUnits modules
+
+The main GeoUnits module consist of various sub-modules that can be used on a case basis. 
+Including the _GeoUnits_ module will include and extend the base class with all these sub-modules.
+
+class MyGeoThingy
+  include GeoUnits::Maps # various maps, mapping unit to some distance etc.
+  extend GeoUnits::Constants # useful geo constants
+  
+  ...
+end  
 
 h2. Contributing to geo_units
  

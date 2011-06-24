@@ -1,4 +1,9 @@
 require 'spec_helper'
+require 'active_support/inflector'
+
+class MyGeoThingy
+  include GeoUnits
+end
 
 describe GeoUnits do
   describe '#key' do

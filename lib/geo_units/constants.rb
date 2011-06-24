@@ -15,18 +15,6 @@ module GeoUnits
     def meters_per_feet 
       3.2808399
     end
-
-    def miles_per_latitude_degree 
-      69.1
-    end
-
-    def kms_per_latitude_degree
-      miles_per_latitude_degree * kms_per_mile
-    end
-
-    def latitude_degrees 
-      earth_radius_map[:miles] / miles_per_latitude_degree
-    end
   
     extend self      
   end

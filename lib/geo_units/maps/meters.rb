@@ -19,7 +19,9 @@ module GeoUnits
          :miles   => 0.00062137,
          :radians => 0.00000899
         }
-      end
+      end 
+      
+      extend self
     end
   end
 end

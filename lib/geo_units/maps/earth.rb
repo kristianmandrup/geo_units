@@ -30,7 +30,7 @@ module GeoUnits
         }
       end
 
-      def minor_axis_radius 
+      def minor_axis_radius
         {
         :kilometers => 6356.7523142,
         :miles      => 3949.90276,

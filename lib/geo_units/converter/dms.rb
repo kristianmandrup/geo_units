@@ -6,21 +6,23 @@ module GeoUnits
     module Dms
       include NumericCheckExt
 
-      def parse_dms dms_str  
+      def parse_dms dms_str, options= {}
         # check for signed decimal degrees without NSEW, if so return it directly
         return dms_str if is_numeric?(dms_str)
+
+        raise "DMS parse error: #{dms_str}" if !(dms_str =~ /[NSEW]$/) || (dms_str =~ /\./)
 
         # strip off any sign or compass dir'n & split out separate d/m/s
         dms = dms_str.strip.gsub(/^-/,'').gsub(/[NSEW]$/i,'').split(/[^0-9.,]+/).map(&:strip).map(&:to_f)
         return nil if dms.empty?
 
         # and convert to decimal degrees...
-        deg = case dms.length      
+        deg = case dms.length
         when 3 # interpret 3-part result as d/m/s
-           dms[0]/1 + dms[1]/60 + dms[2]/3600
+          dms[0]/1 + dms[1]/60 + dms[2]/3600
         when 2 # interpret 2-part result as d/m
-          dms[0]/1 + dms[1]/60        
-        when 1 # just d (possibly decimal) or non-separated dddmmss        
+          dms[0]/1 + dms[1]/60
+        when 1 # just d (possibly decimal) or non-separated dddmmss
           d = dms[0];
           # check for fixed-width unseparated format eg 0033709W
           d = "0#{d}" if (/[NS]/i.match(dms_str)) # - normalise N/S to 3-digit degrees
@@ -29,7 +31,9 @@ module GeoUnits
         else
           nil
         end
-        return nil if !deg
+
+        raise "DMS parse error: #{deg} for #{dms_str}" if !deg
+
         deg = (deg * -1) if (/^-|[WS]$/i.match(dms_str.strip)) # take '-', west and south as -ve
         deg.to_f
       end
@@ -75,7 +79,7 @@ module GeoUnits
           ds = "0#{d}" if (d <100)    # pad with leading zeros
           ds = "0#{ds}" if (d <10) 
           dms = ds.to_s.concat("\u00B0")  # add º symbol
-        when :dm            
+        when :dm
           min = (deg*60).round(dp)   # convert degrees to minutes & round
           d = d.to_i
           d = (min / 60).floor          # get component deg/min
@@ -84,7 +88,7 @@ module GeoUnits
           ms = m
           ds = "0#{d}" if (d<100)        # pad with leading zeros
           ds = "0#{d}" if (d<10)
-          ms = "0#{m}" if (m<10)               
+          ms = "0#{m}" if (m<10)
           dms = ds.to_s.concat("\u00B0", ms, "\u2032") # add º, ' symbols
         when :dms
           sec = (deg * 3600).round   # convert degrees to seconds & round
@@ -102,7 +106,6 @@ module GeoUnits
         end
         return dms
       end
-    
       extend self
     end
   end

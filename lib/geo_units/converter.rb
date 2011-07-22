@@ -1,6 +1,6 @@
 module GeoUnits
   module Converter
-    autoload_modules :Normalizer
+    autoload_modules :Normalizer, :Dms
 
     include Normalizer
 
@@ -13,7 +13,7 @@ module GeoUnits
 
     def to_lat deg, format = :dms, dp = 0
       deg = deg.normalize_lat
-      _lat = DmsConverter.to_dms deg, format, dp
+      _lat = Dms.to_dms deg, format, dp
       _lat == '' ? '' : _lat[1..-1] + (deg<0 ? 'S' : 'N')  # knock off initial '0' for lat!
     end
 
@@ -26,7 +26,7 @@ module GeoUnits
 
     def to_lon deg, format = :dms, dp = 0
       deg = deg.normalize_lng
-      lon = DmsConverter.to_dms deg, format, dp
+      lon = Dms.to_dms deg, format, dp
       lon == '' ? '' : lon + (deg<0 ? 'W' : 'E')
     end
 
@@ -40,11 +40,9 @@ module GeoUnits
 
     def to_brng deg, format = :dms, dp = 0
       deg = (deg.to_f + 360) % 360  # normalise -ve values to 180º..360º
-      brng = DmsConverter.to_dms deg, format, dp
+      brng = Dms.to_dms deg, format, dp
       brng.gsub /360/, '0'  # just in case rounding took us up to 360º!
     end
-
-    protected
 
     include NumericCheckExt # from sugar-high/numeric
 

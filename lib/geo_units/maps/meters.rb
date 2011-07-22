@@ -1,7 +1,7 @@
 module GeoUnits
   module Maps
     module Meters
-      def from_unit_multiplier
+      def from_unit
         {
           :feet     => 0.305,
           :meters   => 1,
@@ -11,7 +11,7 @@ module GeoUnits
         }
       end
 
-      def to_unit_multiplier
+      def to_unit
         {
          :feet    => 3.2808399,
          :meters  => 1,
@@ -20,7 +20,7 @@ module GeoUnits
          :radians => 0.00000899
         }
       end 
-      
+
       extend self
     end
   end

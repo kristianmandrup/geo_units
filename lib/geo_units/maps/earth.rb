@@ -1,18 +1,31 @@
 module GeoUnits
   module Maps
     module Earth
+      include GeoUnits::Constants
+
+      # from mongoid-geo, as suggested by niedhui :)
+      def distance_per_latitude_degree
+      {
+        :feet     => 364491.8,
+        :meters   => 111170,
+        :kms      => 111.17,
+        :miles    => 69.407,
+        :degrees  => 1
+      }
+      end
+
       def radius
         {
-        :miles      => 3963.1676, 
-        :kilometers => 6378.135, 
-        :meters     =>  6378135, 
-        :feet       => 20925639.8 
+        :miles      => 3963.1676,
+        :kilometers => 6378.135,
+        :meters     =>  6378135,
+        :feet       => 20925639.8
         }
       end
 
-      def major_axis_radius 
-        { 
-        :miles      => 3963.19059, 
+      def major_axis_radius
+        {
+        :miles      => 3963.19059,
         :kilometers => 6378.137,
         :meters     => 6378137,
         :feet       => 20925646.36
@@ -20,7 +33,7 @@ module GeoUnits
       end
 
       def minor_axis_radius 
-        { 
+        {
         :kilometers => 6356.7523142,
         :miles      => 3949.90276,
         :meters     => 6356752.3142,
@@ -28,18 +41,10 @@ module GeoUnits
         }
       end
 
-      def miles_per_latitude_degree 
-        69.1
+      def latitude_degrees unit = :miles
+        radius[unit] / distance_per_latitude_degree[unit]
       end
 
-      def kms_per_latitude_degree
-        miles_per_latitude_degree * kms_per_mile
-      end
-
-      def latitude_degrees 
-        earth_radius_map[:miles] / miles_per_latitude_degree
-      end
-      
       extend self
     end
   end

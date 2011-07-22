@@ -1,19 +1,19 @@
 module GeoUnits
   module Numeric
-    autoload_modules :Normalizer, :Dms, :from => 'geo_units'
-    
-    def to_lat 
+    autoload_modules :Normalizer, :Dms
+
+    def to_lat
       normalize_lat
     end
 
-    def to_lng 
+    def to_lng
       normalize_lng
     end
 
     def is_between? lower, upper
       (lower..upper).cover? self
     end
-      
+
     # Converts numeric degrees to radians
     def to_rad
       self * Math::PI / 180
@@ -38,7 +38,6 @@ module GeoUnits
     alias_method :in_deg,     :to_deg
     alias_method :in_degrees, :to_deg
 
-   
     # Formats the significant digits of a number, using only fixed-point notation (no exponential)
     # 
     # @param   {Number} precision: Number of significant digits to appear in the returned string
@@ -46,6 +45,6 @@ module GeoUnits
     def to_precision precision
       self.round(precision).to_s
     end
-    alias_method :to_fixed, :to_precision  
+    alias_method :to_fixed, :to_precision
   end
-end           
+end

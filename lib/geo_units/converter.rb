@@ -1,9 +1,9 @@
 module GeoUnits
-  module Converter    
+  module Converter
     autoload_modules :Normalizer
-    
+
     include Normalizer
-    
+
     # Convert numeric degrees to deg/min/sec latitude (suffixed with N/S)
     # 
     # @param   {Number} deg: Degrees
@@ -42,12 +42,12 @@ module GeoUnits
       deg = (deg.to_f + 360) % 360  # normalise -ve values to 180º..360º
       brng = DmsConverter.to_dms deg, format, dp
       brng.gsub /360/, '0'  # just in case rounding took us up to 360º!
-    end 
+    end
 
     protected
 
     include NumericCheckExt # from sugar-high/numeric
-    
+
     # Converts numeric degrees to radians
     def to_rad degrees
       degrees * Math::PI / 180
@@ -71,9 +71,8 @@ module GeoUnits
     alias_method :as_degrees, :to_deg
     alias_method :in_deg,     :to_deg
     alias_method :in_degrees, :to_deg
-    
-    extend self    
-  end 
-   
+
+    extend self
+  end
   extend self
 end

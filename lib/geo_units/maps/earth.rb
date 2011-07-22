@@ -1,8 +1,6 @@
 module GeoUnits
   module Maps
     module Earth
-      include GeoUnits::Constants
-
       # from mongoid-geo, as suggested by niedhui :)
       def distance_per_latitude_degree
       {

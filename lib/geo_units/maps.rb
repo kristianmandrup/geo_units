@@ -1,6 +1,6 @@
 module GeoUnits
   module Maps
-    autoload_modules :Earth, :Meters'
+    autoload_modules :Earth, :Meters
 
     def self.include(base)
       base.send :include, Earth

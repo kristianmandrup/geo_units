@@ -20,12 +20,12 @@ end
 
 class Fixnum
   include GeoUnitExt
-  include ::GeoUnits::NumericExt
+  include ::GeoUnits::Numeric
 end
 
 class Float
   include GeoUnitExt
-  include ::GeoUnits::NumericExt
+  include ::GeoUnits::Numeric
 end 
 
 class String

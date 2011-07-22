@@ -19,7 +19,7 @@ require 'sugar-high/numeric'
 require 'sugar-high/class_ext'
 
 module GeoUnits
-  autoload_modules :Converter, :DmsConverter, :NumericExt, :Maps, :Constants, :UnitConversions, :from => 'geo_units'
+  autoload_modules :Constants, :Converter, :Maps, :Numeric
 
   def self.included(base)
     [Maps, Constants, UnitConversions].each do |module_name| 

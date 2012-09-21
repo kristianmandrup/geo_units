@@ -20,6 +20,6 @@ describe GeoUnits::Maps::Earth do
 
   specify { subject.minor_axis_radius[:miles].should be_between(3949, 3950) }
 
-  specify { subject.latitude_degrees[:miles].should be_between(57, 58)  }
+  specify { subject.latitude_degrees(:miles).should be_between(57, 58)  }
 end
 

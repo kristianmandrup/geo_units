@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 class Parser
-  include GeoUnits::DmsConverter
+  include GeoUnits::Converter::Dms
 end
 
 def parser
@@ -9,7 +9,7 @@ def parser
 end
 
 # - www.movable-type.co.uk/scripts/latlong.html
-describe GeoUnits::DmsConverter do
+describe GeoUnits::Converter::Dms do
   # # @param   {String|Number} dmsStr: Degrees or deg/min/sec in variety of formats
   # @returns {Number} Degrees as decimal number
   describe '#parse_dms' do

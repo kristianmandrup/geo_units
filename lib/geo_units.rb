@@ -21,6 +21,14 @@ require 'sugar-high/class_ext'
 module GeoUnits
   autoload_modules :Constants, :Converter, :Maps, :Numeric
 
+  class << self
+    attr_accessor :default_coords_order
+
+    def default_coords_order
+      @default_coords_order ||= :lng_lat
+    end
+  end
+
   def self.included(base)
     [Maps, Constants, UnitConversions].each do |module_name| 
       base.send :include, module_name

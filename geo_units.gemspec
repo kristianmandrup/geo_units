@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "geo_units"
-  s.version = "0.3.1"
+  s.version = "0.2.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
@@ -29,9 +29,14 @@ Gem::Specification.new do |s|
     "lib/geo_units/constants.rb",
     "lib/geo_units/converter.rb",
     "lib/geo_units/core_ext.rb",
+    "lib/geo_units/dms_converter.rb",
     "lib/geo_units/maps.rb",
+    "lib/geo_units/numeric_ext.rb",
+    "lib/geo_units/unit_conversions.rb",
     "spec/geo_units/converter_spec.rb",
     "spec/geo_units/core_ext_spec.rb",
+    "spec/geo_units/dms_converter_spec.rb",
+    "spec/geo_units/numeric_ext_spec.rb",
     "spec/geo_units_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -45,14 +50,14 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<sugar-high>, [">= 0.5.0"])
+      s.add_runtime_dependency(%q<sugar-high>, [">= 0.6.0"])
       s.add_runtime_dependency(%q<i18n>, [">= 0"])
       s.add_runtime_dependency(%q<activesupport>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 2.5.0"])
       s.add_development_dependency(%q<bundler>, [">= 1.0.0"])
       s.add_development_dependency(%q<jeweler>, [">= 1.6.4"])
     else
-      s.add_dependency(%q<sugar-high>, [">= 0.5.0"])
+      s.add_dependency(%q<sugar-high>, [">= 0.6.0"])
       s.add_dependency(%q<i18n>, [">= 0"])
       s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 2.5.0"])
@@ -60,7 +65,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, [">= 1.6.4"])
     end
   else
-    s.add_dependency(%q<sugar-high>, [">= 0.5.0"])
+    s.add_dependency(%q<sugar-high>, [">= 0.6.0"])
     s.add_dependency(%q<i18n>, [">= 0"])
     s.add_dependency(%q<activesupport>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 2.5.0"])

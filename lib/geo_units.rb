@@ -16,7 +16,7 @@
 # @throws  ArgumentError
 
 require 'sugar-high/numeric'
-require 'sugar-high/class_ext'
+require 'sweetloader'
 
 module GeoUnits
   autoload_modules :Converter, :DmsConverter, :NumericExt, :Maps, :Constants, :UnitConversions, :from => 'geo_units'

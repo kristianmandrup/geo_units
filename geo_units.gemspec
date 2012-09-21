@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{geo_units}
-  s.version = "0.2.5"
+  s.name = "geo_units"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Kristian Mandrup}]
-  s.date = %q{2011-06-24}
-  s.description = %q{Easily convert between different distance units such as kms, miles etc.}
-  s.email = %q{kmandrup@gmail.com}
+  s.authors = ["Kristian Mandrup"]
+  s.date = "2012-09-21"
+  s.description = "Easily convert between different distance units such as kms, miles etc."
+  s.email = "kmandrup@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.textile"
@@ -29,51 +29,43 @@ Gem::Specification.new do |s|
     "lib/geo_units/constants.rb",
     "lib/geo_units/converter.rb",
     "lib/geo_units/core_ext.rb",
-    "lib/geo_units/dms_converter.rb",
     "lib/geo_units/maps.rb",
-    "lib/geo_units/numeric_ext.rb",
-    "lib/geo_units/unit_conversions.rb",
     "spec/geo_units/converter_spec.rb",
     "spec/geo_units/core_ext_spec.rb",
-    "spec/geo_units/dms_converter_spec.rb",
-    "spec/geo_units/numeric_ext_spec.rb",
     "spec/geo_units_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/kristianmandrup/geo_units}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.5}
-  s.summary = %q{Distance unit modules and functionality for use in geo libraries}
+  s.homepage = "http://github.com/kristianmandrup/geo_units"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.24"
+  s.summary = "Distance unit modules and functionality for use in geo libraries"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<sugar-high>, ["~> 0.4.9.3"])
+      s.add_runtime_dependency(%q<sugar-high>, [">= 0.5.0"])
       s.add_runtime_dependency(%q<i18n>, [">= 0"])
       s.add_runtime_dependency(%q<activesupport>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 2.5.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.6"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, [">= 1.0.0"])
+      s.add_development_dependency(%q<jeweler>, [">= 1.6.4"])
     else
-      s.add_dependency(%q<sugar-high>, ["~> 0.4.9.3"])
+      s.add_dependency(%q<sugar-high>, [">= 0.5.0"])
       s.add_dependency(%q<i18n>, [">= 0"])
       s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 2.5.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.6"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<bundler>, [">= 1.0.0"])
+      s.add_dependency(%q<jeweler>, [">= 1.6.4"])
     end
   else
-    s.add_dependency(%q<sugar-high>, ["~> 0.4.9.3"])
+    s.add_dependency(%q<sugar-high>, [">= 0.5.0"])
     s.add_dependency(%q<i18n>, [">= 0"])
     s.add_dependency(%q<activesupport>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 2.5.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.6"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<bundler>, [">= 1.0.0"])
+    s.add_dependency(%q<jeweler>, [">= 1.6.4"])
   end
 end
 

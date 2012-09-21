@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "geo_units"
-  s.version = "0.2.7"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kristian Mandrup"]
@@ -28,15 +28,28 @@ Gem::Specification.new do |s|
     "lib/geo_units.rb",
     "lib/geo_units/constants.rb",
     "lib/geo_units/converter.rb",
+    "lib/geo_units/converter/dms.rb",
+    "lib/geo_units/converter/normalizer.rb",
+    "lib/geo_units/converter/units.rb",
     "lib/geo_units/core_ext.rb",
-    "lib/geo_units/dms_converter.rb",
     "lib/geo_units/maps.rb",
-    "lib/geo_units/numeric_ext.rb",
+    "lib/geo_units/maps/earth.rb",
+    "lib/geo_units/maps/meters.rb",
+    "lib/geo_units/numeric.rb",
+    "lib/geo_units/numeric/dms.rb",
+    "lib/geo_units/numeric/normalizer.rb",
     "lib/geo_units/unit_conversions.rb",
+    "spec/geo_units/converter/dms_spec.rb",
+    "spec/geo_units/converter/normalizer_spec.rb",
+    "spec/geo_units/converter/units_spec.rb",
     "spec/geo_units/converter_spec.rb",
     "spec/geo_units/core_ext_spec.rb",
-    "spec/geo_units/dms_converter_spec.rb",
-    "spec/geo_units/numeric_ext_spec.rb",
+    "spec/geo_units/maps/earth_spec.rb",
+    "spec/geo_units/maps/meters_spec.rb",
+    "spec/geo_units/maps_spec.rb",
+    "spec/geo_units/numeric/dms_spec.rb",
+    "spec/geo_units/numeric/normalizer_spec.rb",
+    "spec/geo_units/numeric_spec.rb",
     "spec/geo_units_spec.rb",
     "spec/spec_helper.rb"
   ]

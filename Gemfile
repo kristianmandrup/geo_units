@@ -2,6 +2,7 @@ source "http://rubygems.org"
 # Add dependencies required to use your gem here.
 
 gem "sugar-high", '>= 0.6.0'
+gem 'sweetloader'
 gem 'i18n' 
 gem 'activesupport' 
 

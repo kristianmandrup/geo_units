@@ -6,11 +6,13 @@ module GeoUnits
     module Dms
       include NumericCheckExt
 
+      class ParseError < StandardError; end
+
       def parse_dms dms_str, options= {}
         # check for signed decimal degrees without NSEW, if so return it directly
         return dms_str if is_numeric?(dms_str)
 
-        raise "DMS parse error: #{dms_str}" if !(dms_str =~ /[NSEW]$/) || (dms_str =~ /\./)
+        raise ParseError, "DMS parse error: #{dms_str}" if !(dms_str =~ /[NSEW]$/) || (dms_str =~ /\./)
 
         # strip off any sign or compass dir'n & split out separate d/m/s
         dms = dms_str.strip.gsub(/^-/,'').gsub(/[NSEW]$/i,'').split(/[^0-9.,]+/).map(&:strip).map(&:to_f)
@@ -32,7 +34,7 @@ module GeoUnits
           nil
         end
 
-        raise "DMS parse error: #{deg} for #{dms_str}" if !deg
+        raise ParseError, "DMS parse error: #{deg} for #{dms_str}" if !deg
 
         deg = (deg * -1) if (/^-|[WS]$/i.match(dms_str.strip)) # take '-', west and south as -ve
         deg.to_f

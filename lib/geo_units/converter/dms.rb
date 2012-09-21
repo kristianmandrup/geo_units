@@ -78,7 +78,7 @@ module GeoUnits
           d = deg.round(dp)       # round degrees
           ds = "0#{d}" if (d <100)    # pad with leading zeros
           ds = "0#{ds}" if (d <10) 
-          dms = ds.to_s.concat("\u00B0")  # add º symbol
+          dms = ds.to_s.concats("\u00B0")  # add º symbol
         when :dm
           min = (deg*60).round(dp)   # convert degrees to minutes & round
           d = d.to_i
@@ -89,7 +89,7 @@ module GeoUnits
           ds = "0#{d}" if (d<100)        # pad with leading zeros
           ds = "0#{d}" if (d<10)
           ms = "0#{m}" if (m<10)
-          dms = ds.to_s.concat("\u00B0", ms, "\u2032") # add º, ' symbols
+          dms = ds.to_s.concats("\u00B0", ms, "\u2032") # add º, ' symbols
         when :dms
           sec = (deg * 3600).round   # convert degrees to seconds & round
           d = (sec / 3600).floor          # get component deg/min/sec
@@ -102,7 +102,7 @@ module GeoUnits
           ds = "0#{ds}" if (d < 10) 
           ms = "0#{m}" if (m < 10) 
           ss = "0#{s}" if (s < 10) 
-          dms = ds.to_s.concat("\u00B0", ms, "\u2032", ss, "\u2033")  # add º, ', " symbols
+          dms = ds.to_s.concats("\u00B0", ms, "\u2032", ss, "\u2033")  # add º, ', " symbols
         end
         return dms
       end

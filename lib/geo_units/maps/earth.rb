@@ -4,11 +4,11 @@ module GeoUnits
       # from mongoid-geo, as suggested by niedhui :)
       def distance_per_latitude_degree
       {
-        :feet     => 364491.8,
-        :meters   => 111170,
-        :kms      => 111.17,
-        :miles    => 69.407,
-        :degrees  => 1
+        :feet       => 364491.8,
+        :meters     => 111170,
+        :kilometers => 111.17,
+        :miles      => 69.407,
+        :degrees    => 1
       }
       end
 
@@ -16,7 +16,7 @@ module GeoUnits
         {
         :miles      => 3963.1676,
         :kilometers => 6378.135,
-        :meters     =>  6378135,
+        :meters     => 6378135,
         :feet       => 20925639.8
         }
       end

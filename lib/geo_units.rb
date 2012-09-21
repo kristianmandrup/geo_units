@@ -30,28 +30,49 @@ module GeoUnits
   end
 
   def self.included(base)
-    [Maps, Constants, UnitConversions].each do |module_name| 
+    [:Maps, :Constants, :"Converter::Units"].each do |module_name| 
+      module_name = "GeoUnits::#{module_name.to_s.camelize}".constantize
       base.send :include, module_name
       base.extend module_name
     end
   end
 
   def self.units
-    [:feet, :meters, :kms, :miles, :radians]
+    [:feet, :meters, :kms, :kilometers, :miles, :radians]
   end
 
-  units.each do |unit|
-    class_eval %{
-      def self.#{unit}_to unit, number = 0
-        return 0 if number <= 0
-        unit = key(unit)
-        m = number / GeoUnits::Maps.meters_map[:#{unit}]
-        m * GeoUnits::Maps.meters_map[unit]
-      end
-    }
+  (units - [:radians]).each do |unit_type|
+    define_singleton_method "#{unit_type}_to" do |unit, number = 0|
+      return 0 if number <= 0        
+      unit = normalized(unit)
+      
+      converter = GeoUnits::Maps::Meters
+      from = converter.from_unit[unit_type]
+      to = converter.to_unit[unit]
+
+      m = number * from * to
+    end
+  end
+
+  def self.radians_to unit, number, lat = 0
+    unit = normalized(unit)
+    # factor = GeoUnits::Converter::Units.units_per_longitude_degree(lat, unit)
+    # puts "factor: #{factor} - #{unit}"
+    (GeoUnits::Maps::Earth.distance_per_latitude_degree[unit] * number.to_f) 
   end
 
   module ClassMethods
+    def normalized unit = :km
+      unit = key(unit)
+      return :feet if feet_unit.include? unit
+      return :meters if meters_unit.include? unit
+      return :kilometers if kms_unit.include? unit
+      return :miles if miles_unit.include? unit
+      return :radians if radins_unit.include? unit
+
+      raise ArgumentError, "Normalize unit error, unit key: #{unit}"
+    end
+
     def key unit = :km
       unit = unit.to_sym
       methods.grep(/_unit$/).each do |meth|

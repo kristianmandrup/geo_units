@@ -38,21 +38,21 @@ describe GeoUnits::Converter::Dms do
     it 'should convert 58.3 to a String in DMS format' do
       dms = parser.to_dms(58.3)
       dms.should be_a(String)
-      expr = Regexp.escape "058".concat("\u00B0", "18", "\u2032", "00", "\u2033")
+      expr = Regexp.escape "058".concats("\u00B0", "18", "\u2032", "00", "\u2033")
       dms.should match expr
     end
   
     it 'should convert 58.3 to a String in DM format' do
       dm = parser.to_dms(58.3, :dm, 2)
       dm.should be_a(String)
-      expr = Regexp.escape "058".concat("\u00B0", "18", "\u2032")
+      expr = Regexp.escape "058".concats("\u00B0", "18", "\u2032")
       dm.should match expr
     end
   
     it 'should convert 58.3 to a String in D format' do
       d = parser.to_dms(58.3, :d, 2)
       d.should be_a(String)
-      m = Regexp.escape "058".concat("\u00B0")
+      m = Regexp.escape "058".concats("\u00B0")
       d.should match m
     end
   end  

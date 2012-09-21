@@ -15,14 +15,14 @@ describe GeoUnits::Converter do
     it 'should convert 58.3 to a latitude String in North direction' do
       str_lat = converter.to_lat(58.3)
       str_lat.should be_a(String)
-      expr = Regexp.escape "58".concat("\u00B0", "18", "\u2032", "00", "\u2033", "N")
+      expr = Regexp.escape "58".concats("\u00B0", "18", "\u2032", "00", "\u2033", "N")
       str_lat.should match expr
     end
 
     it 'should convert -58.3 to a latitude String in South direction' do
       str_lat = converter.to_lat(-58.3)
       str_lat.should be_a(String)
-      expr = Regexp.escape "58".concat("\u00B0", "18", "\u2032", "00", "\u2033", "S")
+      expr = Regexp.escape "58".concats("\u00B0", "18", "\u2032", "00", "\u2033", "S")
       str_lat.should match expr
     end
   end
@@ -32,14 +32,14 @@ describe GeoUnits::Converter do
     it 'should convert 58.3 to a longitude String' do
       str_lat = converter.to_lon(58.3)
       str_lat.should be_a(String)
-      expr = Regexp.escape "58".concat("\u00B0", "18", "\u2032", "00", "\u2033", "E")
+      expr = Regexp.escape "58".concats("\u00B0", "18", "\u2032", "00", "\u2033", "E")
       str_lat.should match expr        
     end
 
     it 'should convert 58.3 to a longitude String' do
       str_lat = converter.to_lon(-58.3)
       str_lat.should be_a(String)
-      expr = Regexp.escape "58".concat("\u00B0", "18", "\u2032", "00", "\u2033", "W")
+      expr = Regexp.escape "58".concats("\u00B0", "18", "\u2032", "00", "\u2033", "W")
       str_lat.should match expr        
     end
   end
@@ -50,7 +50,7 @@ describe GeoUnits::Converter do
     it 'should convert 58.3 to a longitude String' do
       brng = converter.to_brng(-58.3)
       brng.to_f.should be_between(0, 360)
-      expr = Regexp.escape "301".concat("\u00B0", "42", "\u2032", "00")
+      expr = Regexp.escape "301".concats("\u00B0", "42", "\u2032", "00")
       brng.should match expr
     end
   end

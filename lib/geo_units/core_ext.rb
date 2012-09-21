@@ -1,13 +1,11 @@
 require 'sugar-high/numeric'
 
 module GeoUnitExt
-  ::GeoUnits.units.each do |unit|
-    class_eval %{
-      def #{unit}_to unit
-        unit = GeoUnits.key(unit)
-        self.to_f * GeoUnits::Maps::Meters.from_unit[:#{unit}] * GeoUnits::Maps::Meters.to_unit[unit]
-      end
-    }
+  ::GeoUnits.units.each do |unit_type|
+    define_method "#{unit_type}_to" do |unit|
+      unit = GeoUnits.normalized(unit)
+      self.to_f * GeoUnits::Maps::Meters.from_unit[unit_type] * GeoUnits::Maps::Meters.to_unit[unit]
+    end
   end
 
   include NumberDslExt # from sugar-high

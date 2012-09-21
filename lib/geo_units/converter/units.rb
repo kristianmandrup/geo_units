@@ -15,8 +15,12 @@ module GeoUnits
         GeoUnits::Maps.radian_multiplier[units]
       end
 
+      def pi_div_rad
+        GeoUnits::Constants.pi_div_rad
+      end
+
       def units_per_longitude_degree(lat, units)
-        miles_per_longitude_degree = (latitude_degrees * Math.cos(lat * pi_div_rad)).abs 
+        miles_per_longitude_degree = (lat * Math.cos(lat * pi_div_rad)).abs 
         units = GeoUnits.key units
         miles_per_longitude_degree.miles_to(units)
       end 

@@ -1,6 +1,6 @@
 module GeoUnits
   module Converter
-    autoload_modules :Normalizer, :Dms
+    autoload_modules :Normalizer, :Dms, :Units
 
     include Normalizer
 

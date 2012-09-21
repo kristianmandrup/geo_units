@@ -15,6 +15,21 @@ Then run the bundler!
 
 @$ bundle@
 
+h2. Status update (Sept 21, 2011)
+
+GeoUnits is currently undergoing a major refactoring effort in order to group functionality in a more granular fashion, to allow for greater flexibility.
+Also, the new GeoUnits will not specifically target use for geo calculations for Earth, but also other globes/worlds, such as in a fantasy setting, planets, suns etc.
+Please help in this effort :)
+
+The master branch has now been updated in order to allow specification of the order:
+Set the `GeoUnit.default_coords_order` to fit your usage scenario.
+
+`GeoUnit.default_coords_order = :lng_lat`
+
+`GeoUnit.default_coords_order = :lat_lng` 
+
+All specs pass again and the dependencies have been updated :)
+
 h2. GeoUnits API
 
 <pre>GeoUnits.key(:foot) # will convert any kind of unit into one of (:feet, :meters, :kms, :miles, :radians)

@@ -19,12 +19,20 @@ require 'sugar-high/numeric'
 require 'sweetloader'
 
 module GeoUnits
-  autoload_modules :Converter, :DmsConverter, :NumericExt, :Maps, :Constants, :UnitConversions, :from => 'geo_units'
-  
-  def self.included(base)   
+  autoload_modules :Constants, :Converter, :Maps, :Numeric
+
+  class << self
+    attr_accessor :default_coords_order
+
+    def default_coords_order
+      @default_coords_order ||= :lng_lat
+    end
+  end
+
+  def self.included(base)
     [Maps, Constants, UnitConversions].each do |module_name| 
       base.send :include, module_name
-      base.extend module_name      
+      base.extend module_name
     end
   end
 
@@ -76,11 +84,11 @@ module GeoUnits
 
     def radians_unit
       [:rad, :radians]
-    end          
+    end
   end
-  
+
   extend ClassMethods
-end  
+end
 
 require 'geo_units/core_ext'
 

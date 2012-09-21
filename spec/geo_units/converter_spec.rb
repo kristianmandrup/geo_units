@@ -10,7 +10,7 @@ end
 
 # - www.movable-type.co.uk/scripts/latlong.html
 describe GeoUnits::Converter do
-  # deg, format, dp      
+  # deg, format, dp
   describe '#to_lat' do
     it 'should convert 58.3 to a latitude String in North direction' do
       str_lat = converter.to_lat(58.3)

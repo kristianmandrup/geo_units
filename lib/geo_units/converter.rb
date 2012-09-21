@@ -1,5 +1,9 @@
 module GeoUnits
   module Converter
+    autoload_modules :Normalizer, :Dms
+
+    include Normalizer
+
     # Convert numeric degrees to deg/min/sec latitude (suffixed with N/S)
     # 
     # @param   {Number} deg: Degrees
@@ -9,7 +13,7 @@ module GeoUnits
 
     def to_lat deg, format = :dms, dp = 0
       deg = deg.normalize_lat
-      _lat = DmsConverter.to_dms deg, format, dp
+      _lat = Dms.to_dms deg, format, dp
       _lat == '' ? '' : _lat[1..-1] + (deg<0 ? 'S' : 'N')  # knock off initial '0' for lat!
     end
 
@@ -22,7 +26,7 @@ module GeoUnits
 
     def to_lon deg, format = :dms, dp = 0
       deg = deg.normalize_lng
-      lon = DmsConverter.to_dms deg, format, dp
+      lon = Dms.to_dms deg, format, dp
       lon == '' ? '' : lon + (deg<0 ? 'W' : 'E')
     end
 
@@ -36,14 +40,12 @@ module GeoUnits
 
     def to_brng deg, format = :dms, dp = 0
       deg = (deg.to_f + 360) % 360  # normalise -ve values to 180º..360º
-      brng = DmsConverter.to_dms deg, format, dp
+      brng = Dms.to_dms deg, format, dp
       brng.gsub /360/, '0'  # just in case rounding took us up to 360º!
-    end 
-
-    protected
+    end
 
     include NumericCheckExt # from sugar-high/numeric
-    
+
     # Converts numeric degrees to radians
     def to_rad degrees
       degrees * Math::PI / 180
@@ -67,54 +69,8 @@ module GeoUnits
     alias_method :as_degrees, :to_deg
     alias_method :in_deg,     :to_deg
     alias_method :in_degrees, :to_deg
-    
-    extend self    
-  end 
 
-  # all degrees between -180 and 180
-  def normalize_lng deg
-    case deg 
-    when -360..-180
-      deg % 180      
-    when -180..0 
-      -180 + (deg % 180) 
-    when 0..180
-      deg
-    when 180..360
-      deg % 180
-    else
-      raise ArgumentError, "Degrees #{deg} out of range, must be between -360 to 360"
-    end
+    extend self
   end
-
-  # all degrees between -90 and 90
-  def normalize_lat deg
-    case deg 
-    when -360..-270
-      deg % 90      
-    when -270..-180
-      90 - (deg % 90)
-    when -180..-90
-      - (deg % 90)
-    when -90..0 
-      -90 + (deg % 90) 
-    when 0..90
-      deg
-    when 90..180 
-      deg % 90
-    when 180..270 
-      - (deg % 90)
-    when 270..360 
-      - 90 + (deg % 90)
-    else
-      raise ArgumentError, "Degrees #{deg} out of range, must be between -360 to 360"    
-    end 
-  end
-  
-  def normalize_deg degrees, shift = 0
-    (degrees + shift) % 360 
-  end
-  alias_method :normalize_degrees, :normalize_deg  
-  
   extend self
 end

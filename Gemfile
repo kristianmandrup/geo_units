@@ -1,10 +1,10 @@
 source "http://rubygems.org"
 # Add dependencies required to use your gem here.
 
-gem "sugar-high", '>= 0.6.0'
+gem "sugar-high", '>= 0.7.0'
 gem 'sweetloader'
-gem 'i18n' 
-gem 'activesupport' 
+gem 'i18n'
+gem 'activesupport'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

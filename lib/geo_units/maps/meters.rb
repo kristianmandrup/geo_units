@@ -1,6 +1,10 @@
 module GeoUnits
   module Maps
     module Meters
+      def to_unit_multiplier units = :meters
+        from_unit[units]
+      end
+
       def from_unit
         {
           :feet       => 0.3048,
